@@ -1,0 +1,11 @@
+<mat-card class="card">
+    <mat-card-title>
+        {{exercise.title}}
+    </mat-card-title>
+    <mat-card-content>
+        {{exercise.sets[0].reps + ' X ' + exercise.sets[0].weight}}
+    </mat-card-content>
+    <mat-card-footer>
+        {{exercise.sets[1] ? exercise.sets[1].reps  + ' X ' + exercise.sets[1].weight : 'Train!!!!'}}
+    </mat-card-footer>
+</mat-card>
