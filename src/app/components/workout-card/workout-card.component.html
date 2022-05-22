@@ -4,12 +4,16 @@
         {{exercise.title}}
     </mat-card-title>
     <mat-card-content>
-        {{firstSet}}
-        <br>
-        {{lastSet}}
+        <div class="text">
+            {{firstSet}}
+        </div>
+        <mat-card-subtitle> {{setDifference + ' from last set'}}</mat-card-subtitle>
+        <div class="text">
+            {{lastSet}}
+        </div>
         <form [formGroup]="setsForm" (ngSubmit)="onSubmit(this.setsForm.value.setReps)">
             <mat-form-field appearance="outline">
-                <mat-label>10x100</mat-label>
+                <mat-label>add a set</mat-label>
                 <input id="setReps" type="text" formControlName="setReps" matInput>
                 <mat-error *ngIf="setsForm.invalid">{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -19,7 +23,4 @@
     <mat-card-actions>
       <button mat-button (click)="deleteCard()">DELETE</button>
     </mat-card-actions>
-    <mat-card-footer>
-        
-    </mat-card-footer>
 </mat-card>
