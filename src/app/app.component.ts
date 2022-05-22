@@ -30,6 +30,10 @@ export class AppComponent implements OnInit {
     } as Excercise
 
     this.exercises$.pipe(take(1)).subscribe(data  => {
+      if (!data) {
+        this.storage.setInfo([newSet]);
+        return;
+      }
       data.push(newSet);
     })
     //this.storage.cache.push(newSet);
