@@ -1,10 +1,19 @@
 <div class="one diva">
   <h1>Working set Tracker</h1>
 </div>
-
-<div *ngFor="let exercise of exercises" cdkDrag>
-  <app-workout-card
-  [exercise] = "exercise">
-  </app-workout-card>
+<div class="grid-container">
+  <mat-form-field appearance="outline" class="inputEx" >
+    <input [(ngModel)]="newExerciseTitle" matInput   placeholder="Exercise name">
+  </mat-form-field>
+  <button mat-fab color="accent" (click)="createNewCard()"><mat-icon>add</mat-icon></button>
 </div>
-<button mat-fab color="accent"><mat-icon>add</mat-icon></button>
+<div class="grid-container">
+  <div *ngFor="let exercise of (exercises$ |async)" >
+    <app-workout-card
+    [exercise] = "exercise"
+    (setAdded) = "saveData()"
+    (cardDeleted) = "deleteCard($event)"
+    >
+    </app-workout-card>
+  </div>
+</div>

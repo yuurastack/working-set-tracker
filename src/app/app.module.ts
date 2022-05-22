@@ -12,6 +12,15 @@ import { WorkoutCardComponent } from './components/workout-card/workout-card.com
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { DragDropModule } from "@angular/cdk/drag-drop";
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { LocalStorageRefService } from './services/storage.ref.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
+
+
+
 
 
 
@@ -29,7 +38,13 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
     MatSliderModule,
     MatCardModule,
     MatIconModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule,
     DragDropModule,
+    MatFormFieldModule,
     MatButtonModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -38,7 +53,9 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
       registrationStrategy: 'registerWhenStable:30000'
     }) 
   ],
-  providers: [],
+  providers: [
+    LocalStorageRefService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
