@@ -13,38 +13,36 @@ export class WorkoutCardComponent {
   @Output() public setAdded = new EventEmitter();
   @Output() public cardDeleted = new EventEmitter();
 
-  private setPattern: string = '[0-9]+[\\s]*[xX]{1}\\s*[0-9]+';
-  public setsForm: FormGroup = this.formBuilder.group({
-    setReps : new FormControl('', [Validators.pattern(this.setPattern)])
-  });
+  private setPattern: string;
+  public setsForm: FormGroup ;
 
   
-  get lastSet() {
+  get lastSet(): string {
     return this.exercise.sets && this.exercise.sets[1] ? new Date(this.exercise.sets[0].time).toDateString()
     + ':\xa0\xa0' + this.exercise.sets[1].reps  + ' X ' + this.exercise.sets[1].weight : 'Add another set to see progress'
   }
   
-  get firstSet() {
+  get firstSet(): string {
     return this.exercise.sets && this.exercise.sets[0].reps ? new Date(this.exercise.sets[0].time).toDateString()
     + ':\xa0\xa0' + this.exercise.sets[0].reps + ' X ' + this.exercise.sets[0].weight : 'Add your first set (ex: reps x weight)'
   }
 
-  get setDifference() {
+  get setDifference(): string {
     if (!this.exercise.sets) return '0 % up';
     const diff = (this.getOneRepMaxEpley(this.exercise.sets[0]) / this.getOneRepMaxEpley(this.exercise.sets[1]) -1)* 100;
     const diffStr = diff.toFixed(2);
     return  diff > 0 ? diffStr + '% up' : diffStr+ '% down'
   }
-  
-  
-  
-  
-  constructor(private formBuilder: FormBuilder) {
-    
+
+  get errorMessage(): string {
+    return this.setsForm.controls['setReps'].hasError('pattern') ? 'Not a valid set, try number x number' : '';
   }
   
-  getErrorMessage() {
-    return this.setsForm.controls['setReps'].hasError('pattern') ? 'Not a valid set, try number x number' : '';
+  constructor(private formBuilder: FormBuilder) {
+    this.setPattern =  '[0-9]+[\\s]*[xX]{1}\\s*[0-9]+';
+    this.setsForm = this.formBuilder.group({
+      setReps : new FormControl('', [Validators.pattern(this.setPattern)])
+    });
   }
   
   public getOneRepMaxEpley(set: Set ): number {
@@ -73,7 +71,7 @@ export class WorkoutCardComponent {
     this.setsForm.reset();
   }
 
-  deleteCard() {
+  deleteCard(): void {
     this.cardDeleted.emit(this.exercise);
   }
 
