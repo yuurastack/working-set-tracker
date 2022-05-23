@@ -18,6 +18,7 @@ import { LocalStorageRefService } from './services/storage.ref.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatDialogModule} from '@angular/material/dialog';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 
 
@@ -29,7 +30,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
-    WorkoutCardComponent
+    WorkoutCardComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
