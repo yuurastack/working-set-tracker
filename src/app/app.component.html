@@ -4,8 +4,8 @@
 <div class="grid-container">
   <form [formGroup]="newCardForm" (ngSubmit)="createNewCard()">
     <mat-form-field appearance="outline" class="inputEx" >
-      <input formControlName="newExerciseTitle" matInput   placeholder="Exercise name">
-      <mat-error *ngIf="newCardForm.invalid">exercise title missing</mat-error>
+      <input formControlName="newExerciseTitle" matInput   placeholder="Input exercise name">
+      <mat-error *ngIf="newCardForm.invalid">exercise name missing</mat-error>
     </mat-form-field>
   </form>
   <button mat-fab color="accent" (click)="createNewCard()"><mat-icon>add</mat-icon></button>
