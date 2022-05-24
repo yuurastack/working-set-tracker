@@ -1,4 +1,8 @@
-# Workingsettracker2
+# Working set tracker
+
+This is a free app to track the working set ( the most important one ) of your workouts, with the purpose of keeping it simple.
+
+It calculates set by set how much your lifts increase by transforming the set to the one rep max with the Epley formula.
 
 you can check it live at https://working-set-tracker.web.app/
 
